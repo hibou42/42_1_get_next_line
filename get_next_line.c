@@ -6,7 +6,7 @@
 /*   By: aschaefe <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:44:36 by aschaefe          #+#    #+#             */
-/*   Updated: 2022/11/22 11:49:24 by aschaefe         ###   ########.fr       */
+/*   Updated: 2022/11/22 12:19:27 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 char	*get_next_line(int fd)
 {
+	static char	*str;
 
-	return ();
+	if (fd < 0 || BUFFER_SIZE < 1)
+		return (NULL);
+	if (!str)
+	{
+		str = malloc(1 * sizeof(char));
+	}
+	return (str);
 }

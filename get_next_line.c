@@ -6,7 +6,7 @@
 /*   By: aschaefe <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:44:36 by aschaefe          #+#    #+#             */
-/*   Updated: 2022/11/22 12:23:25 by aschaefe         ###   ########.fr       */
+/*   Updated: 2022/11/22 13:59:21 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char	*get_next_line(int fd)
 	if (!str)
 	{
 		str = malloc(1 * sizeof(char));
+		gnl_bzero(str, 1 * sizeof(char));
 	}
 	return (str);
 }

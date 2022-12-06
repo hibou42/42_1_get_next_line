@@ -12,16 +12,23 @@
 
 #include "get_next_line.h"
 
-void	gnl_bzero (void *s, size_t n)
+void	*ft_calloc(size_t nb, size_t size)
 {
-	char	*str;
-	size_t	i;
+	void	*ptr;
+	char    *str;
+	size_t  i;
 
-	str = (char *)s;
-	i = 0;
-	while (i < n)
+	ptr = malloc(nb * size);
+	if (ptr)
 	{
-		str[i] = 0;
-		i++;
+		str = (char *)ptr;
+		i = 0;
+		while (i < nb * size)
+		{
+			str[i] = 0;
+			i++;
+		}
+		return (ptr);
 	}
+	return (NULL);
 }

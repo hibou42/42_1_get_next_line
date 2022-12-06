@@ -12,24 +12,24 @@
 
 #include "get_next_line.h"
 
-char	buffer_read(int fd, char *str)
-{
-	char	*tmp;
-	int		
-}
-
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
-	char		*line;
+	static char	*statik;
+	char		buffer[BUFFER_SIZE + 1];
+	int			index
+	int			retour;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	buffer = buffer_read(fd, buffer);
-	if (!buffer)
+	while (1)
 	{
-		buffer = malloc(1 * sizeof(char));
-		gnl_bzero(buffer, 1 * sizeof(char));
+		//read les char et add dans le buffer
+		//check if \n
+		//	yes : write in statik and return
+		//	no : continue
+		break;
 	}
-	return (buffer);
+	if (!statik)
+		return (NULL);
+	return (statik);
 }

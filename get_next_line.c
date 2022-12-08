@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int	check_buffer(char *buffer)
+int	isnewline(char *buffer)
 {
 	int	i;
 
@@ -31,21 +31,24 @@ char	*get_next_line(int fd)
 	static char	*statik;
 	char		buffer[BUFFER_SIZE + 1];
 	char		*res;
+	int			pos;
 
 	res = NULL;
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	if (statik)
 	{
-		res = ft_memmove(res, statik, ft_strlen(statik));
+		ft_memmove(res, statik, ft_strlen(statik));
 		ft_bzero(statik, ft_strlen(statik));
 	}
 	while (1)
 	{
 		read(fd, buffer, BUFFER_SIZE);
-		if (check_buffer(buffer) >= 0)
+		pos = isnewline(buffer);
+		if (pos >= 0)
 		{
 			res = ft_strjoin(res, buffer);
+			ft_memmove(statik, &buffer[pos + 1], BUFFER_SIZE - pos);
 			break ;
 		}
 		res = ft_strjoin(res, buffer);

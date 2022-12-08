@@ -44,46 +44,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
-void	*ft_memmove(void *dst, const void *src, size_t size)
-{
-	size_t			i;
-
-	i = 0;
-	if (dst == src || size == 0)
-		return (dst);
-	if (dst > src)
-	{
-		while (size > 0)
-		{
-			((unsigned char *)dst)[size - 1] = ((unsigned char *)src)[size - 1];
-			size--;
-		}	
-	}
-	else
-	{
-		while (i < size)
-		{
-			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-			i++;
-		}
-	}
-	return (dst);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	char	*str;
-	size_t	i;
-
-	str = (char *)s;
-	i = 0;
-	while (i < n)
-	{
-		str[i] = 0;
-		i++;
-	}
-}
-
 void	*ft_calloc(size_t nb, size_t size)
 {
 	void	*ptr;

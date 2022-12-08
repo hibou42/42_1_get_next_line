@@ -9,6 +9,10 @@
 /*   Updated: 2022/11/22 13:58:27 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 10
+#endif
+
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
@@ -19,14 +23,8 @@
 # include <stddef.h>
 
 char	*get_next_line(int fd);
-void	*ft_calloc(size_t nb, size_t size);
-int	ft_strlen(const char *str);
+int     ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
-void	*ft_memmove(void *dst, const void *src, size_t size);
-void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t nb, size_t size);
 
-#endif
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 10
 #endif

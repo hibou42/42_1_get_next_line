@@ -99,9 +99,11 @@ char	*get_next_line(int fd)
 	{
 		printf("boucle(1) // statik = %s /\n", statik);
 		pos = checkline(statik);
+		printf("boucle(1) // pos = %d /\n", pos);
 		if (pos == -1)
 		{
 			check = readmore(statik, fd, ft_strlen(statik) + 1);
+			printf("check = %d /\n", check);
 			if (check == 0)
 				return (NULL);
 		}

@@ -35,11 +35,12 @@ void	finalcut(char *res, char *statik, int pos, int len)
 	statik = tmp;
 }
 
-void	readmore(char *statik, int fd, int len)
+int	readmore(char *statik, int fd, int len)
 {
 	char	tmp[len];
 	char	buffer[BUFFER_SIZE];
 	int		i;
+	int		check;
 
 	i = 0;
 	while (statik[i])
@@ -48,8 +49,9 @@ void	readmore(char *statik, int fd, int len)
 		i++;
 	}
 	free(statik);
-	read(fd, buffer, BUFFER_SIZE);
+	check = read(fd, buffer, BUFFER_SIZE);
 	statik = ft_strjoin(tmp, buffer);
+	return (check);
 }
 
 int	checkline(char *str)
@@ -71,6 +73,7 @@ char	*get_next_line(int fd)
 	static char	*statik;
 	char		*res;
 	int			pos;
+	int			check;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
         	return (NULL);
@@ -80,7 +83,11 @@ char	*get_next_line(int fd)
 	{
 		pos = checkline(statik);
 		if (pos == -1)
-			readmore(statik, fd, ft_strlen(statik) + 1);
+		{
+			check = readmore(statik, fd, ft_strlen(statik) + 1);
+			if (check == 0)
+				return (NULL);
+		}
 		else
 		{
 			res = ft_calloc(pos + 1, sizeof(char));

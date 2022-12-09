@@ -16,8 +16,11 @@ int	main(void)
 {
 	int	fd;
 
-	fd = open("text", O_RDONLY);
+	printf("First in test.c\n");
+	fd = open("text.txt", O_RDONLY);
+	printf("fd = %d\n", fd);
 	get_next_line(fd);
 	close(fd);
+	printf("FINI\n");
 	return (0);
 }

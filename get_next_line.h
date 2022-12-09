@@ -9,10 +9,6 @@
 /*   Updated: 2022/11/22 13:58:27 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 10
-#endif
-
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 

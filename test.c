@@ -11,8 +11,13 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+#include <fcntl.h>
 int	main(void)
 {
+	int	fd;
+
+	fd = open("text", O_RDONLY);
+	get_next_line(fd);
+	close(fd);
 	return (0);
 }

@@ -12,9 +12,9 @@
 
 #include "get_next_line.h"
 
-void	*finalcut(char *res, char *statik, int pos)
+void	finalcut(char *res, char *statik, int pos, int len)
 {
-	char	*tmp;
+	char	tmp[len];
 	int		i;
 	int		i2;
 
@@ -31,16 +31,22 @@ void	*finalcut(char *res, char *statik, int pos)
 		i2++;
 	}
 	free(statik);
-	tmp = malloc((i + i2 + 1) * sizeof(char));
+	statik = ft_calloc((i + i2 + 1), sizeof(char));
 	statik = tmp;
 }
 
-void	readmore(char *statik, int fd)
+void	readmore(char *statik, int fd, int len)
 {
-	char	*tmp;
-	char	*buffer;
-// il faut malloc le buffer et le free
-	tmp = statik;
+	char	tmp[len];
+	char	buffer[BUFFER_SIZE];
+	int		i;
+
+	i = 0;
+	while (statik[i])
+	{	
+		tmp[i] = statik[i];
+		i++;
+	}
 	free(statik);
 	read(fd, buffer, BUFFER_SIZE);
 	statik = ft_strjoin(tmp, buffer);
@@ -64,21 +70,21 @@ char	*get_next_line(int fd)
 {
 	static char	*statik;
 	char		*res;
-	char		*tmp;
 	int			pos;
 
-    if (fd < 0 || BUFFER_SIZE < 1)
-        return (NULL);
+	if (fd < 0 || BUFFER_SIZE < 1)
+        	return (NULL);
 	if (!statik)
-		statik = malloc(1 * sizeof(char));
+		statik = ft_calloc(1, sizeof(char));
 	while (1)
 	{
 		pos = checkline(statik);
 		if (pos == -1)
-			readmore(statik, fd);
+			readmore(statik, fd, ft_strlen(statik) + 1);
 		else
 		{
-			finalcut(res, statik, pos);
+			res = ft_calloc(pos + 1, sizeof(char));
+			finalcut(res, statik, pos, ft_strlen(statik) + 1);
 			return (res);
 		}
 	}

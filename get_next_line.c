@@ -18,6 +18,7 @@ void	finalcut(char *res, char *statik, int pos, int len)
 	int		i;
 	int		i2;
 
+	printf("ft final cut begin // statik = %s /\n", statik);
 	tmp = ft_calloc(len, sizeof(char));
 	i = 0;
 	while(i <= pos)
@@ -40,11 +41,12 @@ void	finalcut(char *res, char *statik, int pos, int len)
 int	readmore(char *statik, int fd, int len)
 {
 	char	*tmp;
-	char	buffer[BUFFER_SIZE];
+	char	buffer[BUFFER_SIZE + 1];
 	int		i;
 	int		check;
 
 	printf("ft readmore begin // statik = %s /\n", statik);
+	printf("ft readmore begin // buffer = %s /\n", buffer);
 	tmp = ft_calloc(len, sizeof(char));
 	i = 0;
 	while (statik[i])
@@ -58,6 +60,7 @@ int	readmore(char *statik, int fd, int len)
 	statik = ft_strjoin(tmp, buffer);
 	free(tmp);
 	printf("ft readmore end // statik = %s /\n", statik);
+	printf("ft readmore end // buffer = %s /\n", buffer);
 	return (check);
 }
 

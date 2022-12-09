@@ -12,9 +12,11 @@
 
 #include "get_next_line.h"
 #include <fcntl.h>
-int	main(void)
+int	main(int ac, char **av)
 {
 	int	fd;
+	(void) ac;
+	(void) av;
 
 	printf("First in test.c\n");
 	fd = open("text.txt", O_RDONLY);

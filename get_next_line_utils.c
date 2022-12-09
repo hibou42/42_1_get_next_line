@@ -35,10 +35,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	len = 0;
 	i = 0;
-	while (s1[i] != '\0')
+	while (s1[i])
 		res[len++] = s1[i++];
 	i = 0;
-	while (s2[i] != '\0')
+	while (s2[i])
 		res[len++] = s2[i++];
 	res[len] = '\0';
 	return (res);

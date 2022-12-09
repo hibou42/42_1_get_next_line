@@ -52,6 +52,7 @@ int	readmore(char *statik, int fd, int len)
 		tmp[i] = statik[i];
 		i++;
 	}
+	tmp[i] = '\0';
 	free(statik);
 	check = read(fd, buffer, BUFFER_SIZE);
 	statik = ft_strjoin(tmp, buffer);

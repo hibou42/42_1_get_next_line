@@ -27,9 +27,9 @@ void	finalcut(char *res, char *statik, int pos, int len)
 		i++;
 	}
 	i2 = 0;
-	while(statik[i])
+	while(statik[i + 1 + i2])
 	{
-		tmp[i2] = statik[i + i2];
+		tmp[i2] = statik[i + 1 + i2];
 		i2++;
 	}
 	free(statik);
@@ -41,7 +41,7 @@ void	finalcut(char *res, char *statik, int pos, int len)
 int	readmore(char *statik, int fd, int len)
 {
 	char	*tmp;
-	char	buffer[BUFFER_SIZE + 1];
+	char	buffer[BUFFER_SIZE];
 	int		i;
 	int		check;
 
@@ -109,8 +109,8 @@ char	*get_next_line(int fd)
 		}
 		else
 		{
-			res = ft_calloc(pos + 1, sizeof(char));
-			finalcut(res, statik, pos, ft_strlen(statik) + 1);
+			res = ft_calloc(pos, sizeof(char));
+			finalcut(res, statik, pos - 1, ft_strlen(statik) + 1);
 			return (res);
 		}
 	}

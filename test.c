@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 	int	i = 0;
 	while(i < 3)
 	{
-	//	get_next_line(fd);
+		get_next_line(fd);
 		i++;
 	}
 	close(fd);

@@ -46,14 +46,15 @@ int	readmore(char *statik, int fd, int len)
 
 	tmp = ft_calloc(len, sizeof(char));
 	i = 0;
-	while (statik[i])
-	{	
+	while (!statik && statik[i])
+	{
 		tmp[i] = statik[i];
 		i++;
 	}
 	tmp[i] = '\0';
 	free(statik);
-	buffer = NULL;
+    statik = NULL;
+    buffer = NULL;
 	check = read(fd, buffer, BUFFER_SIZE);
 	statik = ft_strjoin(tmp, buffer);
 	free(tmp);
@@ -85,7 +86,9 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	while (1)
+	if (!statik)
+        statik = ft_calloc(1, sizeof(char));
+    while (1)
 	{
 		pos = checkline(statik);
 		printf("statik = %s", statik);
@@ -93,7 +96,10 @@ char	*get_next_line(int fd)
 		{
 			check = readmore(statik, fd, ft_strlen(statik));
 			if (check == 0)
-				return (NULL);
+            {
+				free(statik);
+                return (NULL);
+            }
 		}
 		else
 		{

@@ -18,17 +18,17 @@ int	main(int ac, char **av)
 	(void) ac;
 	(void) av;
 
-	printf("First in test.c\n");
+//	printf("First in test.c\n");
 	fd = open("text.txt", O_RDONLY);
-	printf("fd = %d\n", fd);
+//	printf("fd = %d\n", fd);
 	int	i = 0;
 	while(i < 3)
 	{
-		printf("Main boucle");
+//		printf("Main boucle");
 		get_next_line(fd);
 		i++;
 	}
 	close(fd);
-	printf("FINI\n");
+//	printf("FINI\n");
 	return (0);
 }

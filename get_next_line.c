@@ -18,8 +18,7 @@ void	finalcut(char *res, char *statik, int pos, int len)
 	int		i;
 	int		i2;
 
-	printf("ft final cut begin // statik = %s /\n", statik);
-	tmp = ft_calloc(len, sizeof(char));
+//	printf("ft final cut begin // statik = %s /\n", statik);
 	i = 0;
 	while(i <= pos)
 	{
@@ -27,6 +26,7 @@ void	finalcut(char *res, char *statik, int pos, int len)
 		i++;
 	}
 	i2 = 0;
+	tmp = ft_calloc(len, sizeof(char));
 	while(statik[i + 1 + i2])
 	{
 		tmp[i2] = statik[i + 1 + i2];
@@ -35,18 +35,21 @@ void	finalcut(char *res, char *statik, int pos, int len)
 	free(statik);
 	statik = ft_calloc((i + i2 + 1), sizeof(char));
 	statik = tmp;
+//	printf("ft final cut end // statik = %s /\n", statik);
+//	printf("ft final cut end // tmp = %s /\n", tmp);
 	free(tmp);
 }
 
 int	readmore(char *statik, int fd, int len)
 {
 	char	*tmp;
-	char	buffer[BUFFER_SIZE];
+	char	*buffer;
 	int		i;
 	int		check;
 
-	printf("ft readmore begin // statik = %s /\n", statik);
-	printf("ft readmore begin // buffer = %s /\n", buffer);
+//	printf("ft readmore begin // statik = %s /\n", statik);
+	buffer = ft_calloc(BUFFER_SIZE, sizeof(char));
+//	printf("ft readmore begin // buffer = %s /\n", buffer);
 	tmp = ft_calloc(len, sizeof(char));
 	i = 0;
 	while (statik[i])
@@ -59,8 +62,8 @@ int	readmore(char *statik, int fd, int len)
 	check = read(fd, buffer, BUFFER_SIZE);
 	statik = ft_strjoin(tmp, buffer);
 	free(tmp);
-	printf("ft readmore end // statik = %s /\n", statik);
-	printf("ft readmore end // buffer = %s /\n", buffer);
+//	printf("ft readmore end // statik = %s /\n", statik);
+//	printf("ft readmore end // buffer = %s /\n", buffer);
 	return (check);
 }
 
@@ -68,7 +71,7 @@ int	checkline(char *str)
 {
 	int	i;
 	
-	printf("ft checkline begin // str = %s /\n", str);
+//	printf("ft checkline // str = %s /\n", str);
 	i = 0;
 	while(str[i])
 	{
@@ -76,8 +79,6 @@ int	checkline(char *str)
 			return (i);
 		i++;
 	}
-	str[i] = '\0';
-	printf("ft checkline end // str = %s /\n", str);
 	return (-1);
 }
 
@@ -89,21 +90,20 @@ char	*get_next_line(int fd)
 	int			check;
 
 	
-	printf("First in gnl\n");
+//	printf("First in gnl\n");
 	if (fd < 0 || BUFFER_SIZE < 1)
         	return (NULL);
 	if (!statik)
 		statik = ft_calloc(1, sizeof(char));
-	printf("After check in gnl\n");
 	while (1)
 	{
 		printf("boucle(1) // statik = %s /\n", statik);
 		pos = checkline(statik);
-		printf("boucle(1) // pos = %d /\n", pos);
+//		printf("boucle(1) // pos = %d /\n", pos);
 		if (pos == -1)
 		{
 			check = readmore(statik, fd, ft_strlen(statik) + 1);
-			printf("check = %d /\n", check);
+//			printf("check = %d /\n statik after readmore %s\n", check, statik);
 			if (check == 0)
 				return (NULL);
 		}

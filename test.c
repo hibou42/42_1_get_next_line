@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 	int	i = 0;
 	while(i < 3)
 	{
-//		printf("Main boucle");
+		printf("Main boucle\n");
 		get_next_line(fd);
 		i++;
 	}

@@ -33,7 +33,7 @@ void	finalcut(char *res, char *statik, int pos, int len)
 		i2++;
 	}
 	free(statik);
-	statik = ft_calloc((i + i2 + 1), sizeof(char));
+	statik = malloc((i + i2 + 1) * sizeof(char));
 	statik = tmp;
 //	printf("ft final cut end // statik = %s /\n", statik);
 //	printf("ft final cut end // tmp = %s /\n", tmp);
@@ -99,8 +99,8 @@ char	*get_next_line(int fd)
 	{
 		printf("boucle(1) // statik = %s /\n", statik);
 		pos = checkline(statik);
-//		printf("boucle(1) // pos = %d /\n", pos);
-		if (pos == -1)
+		printf("boucle(1) // pos = %d /\n", pos);
+			if (pos == -1)
 		{
 			check = readmore(statik, fd, ft_strlen(statik) + 1);
 //			printf("check = %d /\n statik after readmore %s\n", check, statik);

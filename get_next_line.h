@@ -22,8 +22,8 @@
 # include <stddef.h>
 
 char	*get_next_line(int fd);
-int     ft_strlen(const char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
+int		ft_strlen(const char *str);
+char	*ft_strjoin(char *s1, char *s2);
 void	*ft_calloc(size_t nb, size_t size);
 
 #endif

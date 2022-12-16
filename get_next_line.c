@@ -91,7 +91,6 @@ char	*get_next_line(int fd)
     while (1)
 	{
 		pos = checkline(statik);
-		printf("statik = %s", statik);
 		if (pos == -1)
 		{
 			check = readmore(statik, fd, ft_strlen(statik));

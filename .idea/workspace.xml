@@ -19,22 +19,12 @@
   </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Default-WSL" ENABLED="true" TOOLCHAIN_NAME="WSL" />
+      <configuration PROFILE_NAME="Default" ENABLED="true" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49049781-991e-4904-abf9-921ea119ab7c" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.retry.c.swp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd_to_do_for_compilation" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/get_next_line.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_next_line.h" beforeDir="false" afterPath="$PROJECT_DIR$/get_next_line.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_next_line_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/get_next_line_utils.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/retry.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/test.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,11 +97,16 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "dynamic.analysis.tools",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager" selected="Makefile Application.all">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="42_1_get_next_line" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/gnl">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -181,6 +176,7 @@
       <workItem from="1671193253140" duration="93000" />
       <workItem from="1671193631865" duration="1748000" />
       <workItem from="1671197700567" duration="7495000" />
+      <workItem from="1671230171183" duration="371000" />
     </task>
     <servers />
   </component>
@@ -207,7 +203,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/test.c</url>
-          <line>20</line>
+          <line>18</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

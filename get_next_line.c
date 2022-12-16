@@ -83,8 +83,8 @@ char	*get_next_line(int fd)
 {
 	static char	*statik;
 	char		*res;
-	int 	readret;
-	int			pos;
+	int 		readret;
+	int		pos;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
@@ -94,12 +94,10 @@ char	*get_next_line(int fd)
 	{
 		pos = checkline(statik);
 		if (pos == -1)
-		{
+			{
 			statik = readmore(statik, fd, &readret);
 			if ((readret == -1 || readret == 0) && statik)
 				return (statik);
-			else
-				return (NULL);
 		}
 		else
 		{

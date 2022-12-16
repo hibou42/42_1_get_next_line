@@ -26,7 +26,7 @@ char	*statikcut(char *statik, int pos)
 		res[i] = statik[i + pos];
 		i++;
 	}
-	//free(statik);
+	free(statik);
 	res[i] = '\0';
 	return (res);
 }
@@ -53,11 +53,12 @@ char	*readmore(char *statik, int fd, int *readret)
 	int 	tmp;
 
 	tmp = read(fd, buffer, BUFFER_SIZE);
-	readret = &tmp;
+	*readret = tmp;
 	if (tmp == -1)
 	{
 		return (statik);
 	}
+	buffer[tmp] = '\0';
 	statik = ft_strjoin(statik, buffer);
 	return (statik);
 }

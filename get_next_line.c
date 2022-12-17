@@ -94,9 +94,11 @@ char	*get_next_line(int fd)
 	{
 		pos = checkline(statik);
 		if (pos == -1)
-			{
+		{
 			statik = readmore(statik, fd, &readret);
-			if ((readret == -1 || readret == 0) && statik)
+			if ((readret == -1) && statik)
+				return (statik);
+			if (readret == 0)
 				return (statik);
 		}
 		else

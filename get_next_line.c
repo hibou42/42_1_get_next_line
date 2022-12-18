@@ -62,26 +62,26 @@ char	*readmore(char *statik, int fd, int *readret)
 	statik = ft_strjoin(statik, buffer);
 	return (statik);
 }
-/*
-char	*readret0(char *statik, int readret)
+
+char	*readret0(char **statik, int readret)
 {
 	char	*res;
 
-	if (readret == 0 && statik[0] != '\0')
+	if (readret == 0 && *statik[0] != '\0')
 	{
-		res = rescut(statik, ft_strlen(statik));
-		free(statik);
-		statik = NULL;
+		res = rescut(*statik, ft_strlen(*statik));
+		free(*statik);
+		*statik = NULL;
 		return (res);
 	}
 	else
 	{
-		free(statik);
-		statik = NULL;
+		free(*statik);
+		*statik = NULL;
 		return (NULL);
 	}
 }
-*/
+
 char	*get_next_line(int fd)
 {
 	static char	*statik;
@@ -99,23 +99,8 @@ char	*get_next_line(int fd)
 		if (pos == -1)
 		{
 			statik = readmore(statik, fd, &readret);
-//			if (readret <= 0)
-//				return (readret0(statik, readret));
-
-			if (readret == 0 && statik[0] != '\0')
-			{
-				res = rescut(statik, ft_strlen(statik));
-				free(statik);
-				statik = NULL;
-				return (res);
-			}
 			if (readret <= 0)
-			{
-				free(statik);
-				statik = NULL;
-				return (NULL);
-			}
-
+				return (readret0(&statik, readret));
 		}
 		else
 		{

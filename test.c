@@ -17,12 +17,13 @@ int	main(void)
 {
 	int	fd;
 
-	fd = open("text.txt", O_RDONLY);
+	fd = open("41_with_nl", O_RDONLY);
 	int	i = 0;
 
 	while(i < 10)
 	{
-		printf("%s\n", get_next_line(fd));
+		char	*line = get_next_line(fd);
+		printf("%s\n", line);
 		i++;
 	}
 	close(fd);

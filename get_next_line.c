@@ -84,9 +84,9 @@ char	*get_next_line(int fd)
 	static char	*statik;
 	char		*res;
 	int 		readret;
-	int		pos;
+	int			pos;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!statik)
         statik = ft_calloc(1, 1);
@@ -96,10 +96,12 @@ char	*get_next_line(int fd)
 		if (pos == -1)
 		{
 			statik = readmore(statik, fd, &readret);
-			if ((readret == -1) && statik)
-				return (statik);
-			if (readret == 0)
-				return (statik);
+			if (readret <= 0)
+			{
+				free(statik);
+				statik = NULL;
+				return (NULL);
+			}
 		}
 		else
 		{

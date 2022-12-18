@@ -15,8 +15,8 @@
 char	*statikcut(char *statik, int pos)
 {
 	char	*res;
-	int 	len;
-	int 	i;
+	int		len;
+	int		i;
 
 	len = ft_strlen(statik) - pos;
 	res = ft_calloc(len + 1, sizeof(char));
@@ -34,7 +34,7 @@ char	*statikcut(char *statik, int pos)
 char	*rescut(char *statik, int pos)
 {
 	char	*res;
-	int 	i;
+	int		i;
 
 	res = ft_calloc(pos + 2, sizeof(char));
 	i = 0;
@@ -50,7 +50,7 @@ char	*rescut(char *statik, int pos)
 char	*readmore(char *statik, int fd, int *readret)
 {
 	char	buffer[BUFFER_SIZE + 1];
-	int 	tmp;
+	int		tmp;
 
 	tmp = read(fd, buffer, BUFFER_SIZE);
 	*readret = tmp;
@@ -62,40 +62,46 @@ char	*readmore(char *statik, int fd, int *readret)
 	statik = ft_strjoin(statik, buffer);
 	return (statik);
 }
-
-int	checkline(char *str)
+/*
+char	*readret0(char *statik, int readret)
 {
-	int	i;
+	char	*res;
 
-	i = 0;
-	if (!str)
-		return (-1);
-	while(str[i])
+	if (readret == 0 && statik[0] != '\0')
 	{
-		if (str[i] == '\n')
-			return (i);
-		i++;
+		res = rescut(statik, ft_strlen(statik));
+		free(statik);
+		statik = NULL;
+		return (res);
 	}
-	return (-1);
+	else
+	{
+		free(statik);
+		statik = NULL;
+		return (NULL);
+	}
 }
-
+*/
 char	*get_next_line(int fd)
 {
 	static char	*statik;
 	char		*res;
-	int 		readret;
+	int			readret;
 	int			pos;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!statik)
-        statik = ft_calloc(1, 1);
+		statik = ft_calloc(1, 1);
 	while (1)
 	{
 		pos = checkline(statik);
 		if (pos == -1)
 		{
 			statik = readmore(statik, fd, &readret);
+//			if (readret <= 0)
+//				return (readret0(statik, readret));
+
 			if (readret == 0 && statik[0] != '\0')
 			{
 				res = rescut(statik, ft_strlen(statik));
@@ -109,6 +115,7 @@ char	*get_next_line(int fd)
 				statik = NULL;
 				return (NULL);
 			}
+
 		}
 		else
 		{

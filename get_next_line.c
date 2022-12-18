@@ -36,7 +36,7 @@ char	*rescut(char *statik, int pos)
 	char	*res;
 	int 	i;
 
-	res = ft_calloc(pos + 1, sizeof(char));
+	res = ft_calloc(pos + 2, sizeof(char));
 	i = 0;
 	while (i <= pos)
 	{
@@ -96,6 +96,13 @@ char	*get_next_line(int fd)
 		if (pos == -1)
 		{
 			statik = readmore(statik, fd, &readret);
+			if (readret == 0 && statik[0] != '\0')
+			{
+				res = rescut(statik, ft_strlen(statik));
+				free(statik);
+				statik = NULL;
+				return (res);
+			}
 			if (readret <= 0)
 			{
 				free(statik);
